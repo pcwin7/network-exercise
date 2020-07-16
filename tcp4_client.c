@@ -20,7 +20,11 @@ int main(int argc, char **argv, char **envp)
     if (set_address4(argv[argn], iname, sname, &peer, "tcp") == NULL)
         error(1, errno, "set address failed");
 
-    if (connect(s, (struct sockaddr *)&peer, sizeof(peer)) < 0)
+    if (connect(s, (struct sockaddr *)&peer, sizeof(peer)) < 0) //コネクションを能動オープンする（connect）。
+                                                                //・s：ソケットディスクリプタ。
+                                                                //・&peer：アドレス構造体のアドレス（ポインタ）。
+                                                                //　・(struct sockaddr*)でキャストする。
+                                                                //・sizeof(peer)：アドレス構造体のサイズ。
         error(1, errno, "connect call failed");
 
     client(s, (struct sockaddr *)&peer, sizeof(peer));
