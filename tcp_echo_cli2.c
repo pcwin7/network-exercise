@@ -71,7 +71,7 @@ void receiver(int s)
     if (verbose)
         printfnl("recv total: %6d", total);
 }
-void client(int s, struct sockaddr *peer, socklen_t plen) 60:
+void client(int s, struct sockaddr *peer, socklen_t plen)
 {
     int pid;
     pid = fork();
